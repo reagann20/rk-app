@@ -6,14 +6,15 @@ import { Food } from "./lib/definitions";
 export default function Home() {
   const [foods, setFoods] = useState<Food[]>([]);
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
-    fetch('http://localhost:3000/food')
+    fetch(`${apiUrl}/food`)
       .then(response => response.json())
       .then(data => setFoods(data))
   }, []);
   
   console.log(foods)
-
 
   return (
     <main>
